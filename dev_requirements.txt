@@ -20,9 +20,12 @@ flask==2.2.2
     # via
     #   -r ./requirements.in
     #   flask-login
+    #   flask-marshmallow
     #   flask-migrate
     #   flask-sqlalchemy
 flask-login==0.6.2
+    # via -r ./requirements.in
+flask-marshmallow==0.14.0
     # via -r ./requirements.in
 flask-migrate==4.0.0
     # via -r ./requirements.in
@@ -51,10 +54,20 @@ markupsafe==2.1.1
     #   jinja2
     #   mako
     #   werkzeug
+marshmallow==3.19.0
+    # via
+    #   flask-marshmallow
+    #   marshmallow-sqlalchemy
+marshmallow-sqlalchemy==0.28.1
+    # via -r ./requirements.in
 mccabe==0.7.0
     # via pylint
 mypy-extensions==0.4.3
     # via black
+packaging==22.0
+    # via
+    #   marshmallow
+    #   marshmallow-sqlalchemy
 pathspec==0.10.3
     # via black
 platformdirs==2.6.0
@@ -67,10 +80,13 @@ pylint==2.15.9
     # via -r ./dev_requirements.in
 python-dotenv==0.21.0
     # via -r ./requirements.in
+six==1.16.0
+    # via flask-marshmallow
 sqlalchemy==1.4.45
     # via
     #   alembic
     #   flask-sqlalchemy
+    #   marshmallow-sqlalchemy
 tomli==2.0.1
     # via
     #   black

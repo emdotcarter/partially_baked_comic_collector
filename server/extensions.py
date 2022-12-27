@@ -2,6 +2,7 @@ from datetime import datetime
 
 import sqlalchemy
 from flask_login import LoginManager
+from flask_marshmallow import Marshmallow
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 from flask_sqlalchemy.model import Model
@@ -25,3 +26,4 @@ class Base(Model):  # pylint: disable=too-few-public-methods
 db = SQLAlchemy(model_class=Base)
 migrate = Migrate()
 login_manager = LoginManager()
+marshmallow = Marshmallow()

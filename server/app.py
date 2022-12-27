@@ -18,17 +18,17 @@ def create_app(config_name):
     from server.config.config import config
 
     from .collector.routes import routes as collector_routes
-    from .extensions import db, login_manager, migrate
+    from .extensions import db, login_manager, marshmallow, migrate
 
     local_app = Flask(APPLICATION_NAME)
     local_app.config.from_object(config[config_name])
 
     db.init_app(local_app)
     login_manager.init_app(local_app)
+    migrate.init_app(local_app, db)
+    marshmallow.init_app(local_app)
 
     local_app.register_blueprint(collector_routes)
-
-    migrate.init_app(local_app, db)
 
     return local_app
 

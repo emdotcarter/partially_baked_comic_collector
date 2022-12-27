@@ -3,6 +3,7 @@ from flask import Blueprint, make_response, request
 from server.extensions import db
 
 from .models import Comic
+from .schemas import comic_schema
 
 routes = Blueprint("routes", __name__)
 
@@ -15,10 +16,10 @@ def create_comic():
     db.session.add(comic)  # pylint: disable=no-member
     db.session.commit()  # pylint: disable=no-member
 
-    return make_response(comic.serialize())
+    return make_response(comic_schema.dump(comic))
 
 
 @routes.route("/1/comics", methods=["GET"])
 def list_comics():
     # pylint: disable=no-member
-    return make_response([c.serialize() for c in db.session.query(Comic).all()])
+    return make_response([comic_schema.dump(c) for c in db.session.query(Comic).all()])
