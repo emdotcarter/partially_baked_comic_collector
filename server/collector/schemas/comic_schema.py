@@ -11,3 +11,4 @@ class ComicSchema(marshmallow.SQLAlchemySchema):
 
 
 comic_schema = ComicSchema()
+comics_schema = ComicSchema(many=True)
